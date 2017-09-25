@@ -70,6 +70,11 @@ This script mocks the board, simulating it's behavior, read **led/future** topic
 Now, back to the subscriber terminal you will se the two topics in action.
 
 
+## MQTT DashBoard ##
+>Another useful client:
+[MQTT Dashboard](https://play.google.com/store/apps/details?id=com.thn.iotmqttdashboard)
+
+
 ## Board ##
 
 ### Materials ###
