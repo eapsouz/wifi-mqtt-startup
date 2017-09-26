@@ -49,7 +49,7 @@ pip3 install paho-mqtt
 ```
 
 ### publisher.py
-cd into python-for-mock and:
+cd into test/python and:
 ```bash
 python3 publisher.py
 ```
