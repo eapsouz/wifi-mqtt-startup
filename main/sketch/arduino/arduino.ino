@@ -15,7 +15,7 @@ static const uint8_t D7 = 2;
 LiquidCrystal lcd(RS, EN, D4, D5, D6, D7);
 
 const uint8_t __degree__ = 0;
-byte symbolDegree[8] ={  B00001100,
+byte symbolDegree[8] ={   B00001100,
                           B00010010,
                           B00010010,
                           B00001100,
