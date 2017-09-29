@@ -72,6 +72,7 @@ bool serialMonitor(){
 // ### Serial ###
 // ### Parse Info ###
 StaticJsonBuffer<512> jsonBuffer;
+
 bool bindInfo(){
   char* t="";
   char* h="";
@@ -103,8 +104,14 @@ void setup()
 
 void loop()
 {
-  if(serialMonitor()&&bindInfo()){
-    printData();
+  if(Serial.available()>0){
+    lcd.setCursor(0,0);
+    String msg = Serial.readString();
+    lcd.print("teste");
   }
+  Serial.print("teste");
+  //if(serialMonitor()&&bindInfo()){
+  //  printData();
+  //}
 }
 // ### PROGRAM ###
