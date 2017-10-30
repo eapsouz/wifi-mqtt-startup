@@ -1,4 +1,5 @@
-#include "mqtt-helper.h"
+#include <mqtt-helper.h>
+#include "device-config.h"
 
 String _ledState = "000";
 
@@ -9,16 +10,16 @@ static const uint8_t greenPin = D1;
 void initLEDs()
 {
   pinMode(redPin, OUTPUT);
-  pinMode(bluePin, OUTPUT);
   pinMode(greenPin, OUTPUT);
+  pinMode(bluePin, OUTPUT);
 }
 
 void changeState(String message)
 {
   _ledState = message;
-  digitalWrite(greenPin, _ledState[0] == '1');
-  digitalWrite(bluePin, _ledState[1] == '1');
-  digitalWrite(redPin, _ledState[2] == '1');
+  digitalWrite(redPin, _ledState[0] == '1');
+  digitalWrite(greenPin, _ledState[1] == '1');
+  digitalWrite(bluePin, _ledState[2] == '1');
   publishState();
 }
 // ### LEDs ###
@@ -37,7 +38,7 @@ void publishState()
   msg[1] = _ledState[1];
   msg[2] = _ledState[2];
   msg[3] = '\0';
-  publish(msg);
+  publish(PUBLISH,msg);
 }
 // ### MQTT ###
 
@@ -60,6 +61,6 @@ void setup()
 void loop()
 {
   checkWifi();
-  checkMqtt();
+  subscribe(SUBSCRIBE, ID_MQTT);
 }
 // ## PROGRAM ###

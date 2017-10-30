@@ -30,18 +30,18 @@ void initMqtt(void (*handler)(String))
     Serial.println("------ MQTT BROKER Conection------");
 }
 // -- check and keep connection alive --
-void checkMqtt()
+void subscribe(char* topico,char* id)
 {
     while (!MQTT.connected())
     {
         Serial.print("Connecting to Broker MQTT: ");
         Serial.println(BROKER_HOST);
-        if (MQTT.connect(ID_MQTT))
+        if (MQTT.connect(id))
         {
             Serial.println("Sucess!");
             Serial.print("Subscribing at: ");
-            MQTT.subscribe(SUBSCRIBE);
-            Serial.println(SUBSCRIBE);
+            MQTT.subscribe(topico);
+            Serial.println(topico);
         }
         else
         {
@@ -53,6 +53,6 @@ void checkMqtt()
     MQTT.loop();
 }
 
-void publish (char* message){
-    MQTT.publish(PUBLISH, message);
+void publish (char* topico,char* message){
+    MQTT.publish(topico, message);
 }

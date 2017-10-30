@@ -2,7 +2,6 @@
 #define MQTT_HELPER_H
 
 #include <PubSubClient.h>
-#include "device-config.h"
 #include "wifi-helper.h"
 
 static const char* BROKER_HOST = "192.168.1.39"; // DNS/IP
@@ -12,8 +11,8 @@ static WiFiClient espClient;
 static PubSubClient MQTT(espClient);
 
 void initMqtt(void (*handler)(String));
-void checkMqtt();
-void publish(char* message);
+void subscribe(char* topico,char* id);
+void publish(char* topico, char* message);
 static void (*messageHandle)(String) = NULL;
 
 #endif
